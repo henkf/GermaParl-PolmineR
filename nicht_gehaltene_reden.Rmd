@@ -76,7 +76,8 @@ Knapp 60% der identifizierten Reden hat einen Quotienten > 0.8. In dieser Gruppe
 
 ```{r}
 # Tabelle bereinigen auf alle mit anteil_rep größer 0.8
-max_rep_role_quot <- max_rep_role %>% filter(anteil_rep > 0.8)
+# > 0.5 ist der plausiblere wert. großes n leicht größer 0.5 sind lange protokolle mit 1 gov; 0.6 < anteil_rep < 0.5 haben diff = 2; protokoll mit 1 role(gov)
+max_rep_role_quot <- max_rep_role %>% filter(anteil_rep < 0.5)
 
 # und die grafiken von oben nochmal zum vergleich
 barplot(table(sort(as.numeric(max_rep_role_quot$agenda_item))), main = "conseq_speech per agenda_item")
